@@ -91,7 +91,10 @@ router.post('/', (req, res, next) => {
 router.post('/signup', (req, res, next) => {
   const {
     username,
-    password
+    password,
+    email,
+    phone,
+    avatar
   } = req.body;
 
   if (!username || !password) {
@@ -116,6 +119,9 @@ router.post('/signup', (req, res, next) => {
       const newUser = User({
         username,
         password: hashPass,
+        phone,
+        email,
+        avatar,
       });
 
       return newUser.save().then(() => {

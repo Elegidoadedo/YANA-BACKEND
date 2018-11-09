@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ObjectId = Schema.Types.ObjectId;
 
 const userSchema = new Schema({
   username: String,
   password: String,
+  phone: Number,
   email: String,
-  Contacts:{},
-  
+  avatar: String,
+  Contacts:{
+    type: ObjectId,
+    ref: 'User'
+  },
   message: [String],
 }, {
   timestamps: {
