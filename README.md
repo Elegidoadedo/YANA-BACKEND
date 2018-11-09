@@ -62,7 +62,7 @@ An app to help users in dangerous moments. Sending the location to all his/her c
 
 `/profile/:id/sos` - show sos alerts
 
-`Sign up Page`
+`Signup Page`
 
 `404 Page`
 

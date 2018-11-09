@@ -16,6 +16,42 @@ router.get('/me', (req, res, next) => {
   }
 });
 
+// // Route '/auth/login' - handles the login process
+router.post('/login', (req, res, next) => {
+  // Protection: if user is already logged in
+  if (req.session.currentUser) {
+    return res.status(401).json({
+      error: 'unauthorized'
+    });
+  }
+ 
+  // Protection: if username or password are empty
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(422).json({
+      error: 'validation'
+    });
+  }
+ 
+  // Check if user has logged in correctly
+  User.findOne({ username })
+    .then((user) => {
+      if (!user) {
+        return res.status(404).json({
+          error: 'not-found'
+        });
+      }
+      if (bcrypt.compareSync(password, user.password)) {
+        req.session.currentUser = user;
+        return res.status(200).json(user);
+      }
+      return res.status(404).json({
+        error: 'not-found'
+      });
+    })
+    .catch(next);
+ });
+
 router.post('/', (req, res, next) => {
   if (req.session.currentUser) {
     return res.status(401).json({
@@ -95,7 +131,7 @@ router.post('/logout', (req, res) => {
   return res.status(204).send();
 });
 
-router.get('/private', isLoggedIn(), (req, res, next) => {
+router.get('/dashboard', isLoggedIn(), (req, res, next) => {
   res.status(200).json({
     message: 'This is a private message'
   });
