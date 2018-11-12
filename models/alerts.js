@@ -15,11 +15,16 @@ const alertSchema = new Schema ({
     coordinates: [Number]
   },
   
-  date: Date
+  date: Date,
+
+  heroe:[{
+    type: ObjectId,
+    ref: 'User'
+  },]
 
   })
 
 
-const Alerts = mongoose.model('Alerts', userSchema);
+const Alerts = mongoose.model('Alerts', alertSchema);
 
 module.exports = Alerts;
