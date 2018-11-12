@@ -35,7 +35,7 @@ router.patch('/addContact', (req, res) => {
       user.save()
       .then((result)=>{
         res.status(200).json(result)
-        .catch(next)
+
       })
     .catch(console.log("no ha encontrado el friend"));  
     })

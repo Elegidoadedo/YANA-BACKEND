@@ -17,7 +17,7 @@ const alertSchema = new Schema ({
   
   date: Date,
 
-  heroe:[{
+  heroes:[{
     type: ObjectId,
     ref: 'User'
   },]
