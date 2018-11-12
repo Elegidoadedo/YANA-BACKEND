@@ -87,6 +87,13 @@ router.post('/', (req, res, next) => {
     .catch(next);
 });
 
+router.post('/addcontact', (req,res,next) => {
+  const {contact, user} = req.body;
+  find= User.filter(username= contact)
+  console.log (find)
+  return res.status(200).json(find);
+})
+
 
 router.post('/signup', (req, res, next) => {
   const {

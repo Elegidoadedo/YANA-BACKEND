@@ -8,10 +8,10 @@ const userSchema = new Schema({
   phone: Number,
   email: String,
   avatar: String,
-  Contacts:{
+  contacts:[{
     type: ObjectId,
     ref: 'User'
-  },
+  }],
   message: [String],
 }, {
   timestamps: {

@@ -12,4 +12,5 @@ router.post('/addalert', (req, res, next) => {
       newAlert.save()
       .then(result => {
         res.redirect(`/dashboard`);
-      } 
+      })
+    }) 
