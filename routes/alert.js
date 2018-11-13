@@ -51,6 +51,17 @@ router.post('/message', (req,res,next) => {
     .catch(next)
   })
 })
+router.post('/deletemessage', (req,res,next) => {
+  const {id} = req.body;
+  User.findByIdAndUpdate(id, {$unset: {message:1}})
+  .then( victim =>{
 
+    victim.save()
+    .then ( result =>{
+      res.status(200).json(result)
+    })
+    .catch(next)
+  })
+})
 
     module.exports = router;

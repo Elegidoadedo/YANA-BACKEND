@@ -10,7 +10,7 @@ const alertSchema = new Schema ({
 
   location: {
     type: {
-      type: String
+      type: String,
     },
     coordinates: [Number]
   },
@@ -23,7 +23,7 @@ const alertSchema = new Schema ({
   },]
 
   })
-
+  alertSchema.index({ location: '2dsphere' });
 
 const Alerts = mongoose.model('Alerts', alertSchema);
 

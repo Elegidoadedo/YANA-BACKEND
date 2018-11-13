@@ -1,0 +1,34 @@
+[debug] [2018-11-13T09:22:06.633Z] ----------------------------------------------------------------------
+[debug] [2018-11-13T09:22:06.635Z] Command:       /home/elegidoadedo/.nvm/versions/node/v10.11.0/bin/node /home/elegidoadedo/.nvm/versions/node/v10.11.0/bin/firebase deploy
+[debug] [2018-11-13T09:22:06.635Z] CLI Version:   6.0.1
+[debug] [2018-11-13T09:22:06.636Z] Platform:      linux
+[debug] [2018-11-13T09:22:06.636Z] Node Version:  v10.11.0
+[debug] [2018-11-13T09:22:06.636Z] Time:          Tue Nov 13 2018 10:22:06 GMT+0100 (GMT+01:00)
+[debug] [2018-11-13T09:22:06.636Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-13T09:22:06.646Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-13T09:22:06.646Z] > authorizing via signed-in user
+[debug] [2018-11-13T09:22:06.646Z] [iam] checking project yana-86131 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2018-11-13T09:22:06.648Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yana-86131:testIamPermissions  
+
+[debug] [2018-11-13T09:22:07.671Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-13T09:22:07.673Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/yana-86131  
+ 
+[debug] [2018-11-13T09:22:07.906Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'yana-86131'...
+[info] 
+[info] i  deploying hosting
+[debug] [2018-11-13T09:22:07.915Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/yana-86131/versions  
+
+[debug] [2018-11-13T09:22:09.505Z] <<< HTTP RESPONSE 200
+[info] i  hosting[yana-86131]: beginning deploy...
+[info] i  hosting[yana-86131]: found 2 files in build
+[debug] [2018-11-13T09:22:09.521Z] [hosting] hash cache [YnVpbGQ] load error: lines is not defined
+[debug] [2018-11-13T09:22:09.529Z] [hosting] hash cache [YnVpbGQ] stored for 2 files
+[debug] [2018-11-13T09:22:09.529Z] [hosting][hash queue][FINAL]
+[debug] [2018-11-13T09:22:09.530Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/yana-86131/versions/9d7694a4e0c78cff:populateFiles  
+ <request body omitted>
+[debug] [2018-11-13T09:22:10.841Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-13T09:22:10.846Z] [hosting][populate queue][FINAL]
+[debug] [2018-11-13T09:22:10.847Z] [hosting] uploads queued: 1
