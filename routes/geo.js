@@ -17,6 +17,15 @@ router.put('/set', (req, res, next) => {
   .catch(next)
 });
 
+router.post('/info', (req,res,next) =>{
+  const user = req.session.currentUser;
+  const {victim} = req.body;
+  console.log("esto es victim",victim)
+  const result ={"user": user, "victim": victim}
+
+  res.status(200).json(result)
+})
+
 router.post('/points', (req, res, next) =>{
   const user = req.session.currentUser.location;
   const {latitude, longitude} = req.body;
@@ -36,8 +45,8 @@ router.post('/points', (req, res, next) =>{
 
         "type": "Point",
         "coordinates": [
-          latitude,
-          longitude
+          longitude,
+          latitude
         ]
       }
       },
@@ -52,12 +61,9 @@ router.post('/points', (req, res, next) =>{
       }
     ]
   }
-  User.find()
-  .then((result)=>{
-    console.log(result,geojson)
+
     res.status(200).json(geojson)
-  })
-  .catch(next)
+
 
 
 })

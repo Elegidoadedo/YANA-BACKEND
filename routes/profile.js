@@ -20,12 +20,10 @@ router.put('/edit', (req, res, next) => {
 
 router.patch('/addContact', (req, res) => {
   const contact = req.body
-  console.log("conatcto:", contact.contact.contact)
   const id = req.session.currentUser._id;
-  console.log("mi id", id)
   User.findById(id)
   .then(user =>{
-    console.log("mi user", user)
+
     User.findOne( {username:contact.contact.contact})
     .then(friend =>{
       console.log("mi amigo",friend)

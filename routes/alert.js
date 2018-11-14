@@ -23,8 +23,8 @@ router.post('/delete', (req,res,next) => {
   })
   .catch(next)
 })
-router.get(`/:id`, (req,res,next) => {
-  const { id } = req.params;
+router.get(`/`, (req,res,next) => {
+  const id = req.session.currentUser._id;
 
   Alerts.find({"heroes": id})
   .populate('creator')
