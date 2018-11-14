@@ -18,6 +18,18 @@ router.put('/edit', (req, res, next) => {
   .catch(next)
 });
 
+router.patch('/alertmode', (req, res, next) => {
+  let {mode} = req.body;
+  console.log("mode en baaaackend", mode)
+  if(mode === "true"){ mode = true} else if(mode === "false"){ mode = false}
+  const user = req.session.currentUser._id;
+  User.findByIdAndUpdate(user, { alertmode: mode })
+  .then((result)=>{
+    res.status(200).json(result)
+  })
+  .catch(next)
+});
+
 router.patch('/addContact', (req, res) => {
   const contact = req.body
   const id = req.session.currentUser._id;

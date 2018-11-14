@@ -8,6 +8,7 @@ const userSchema = new Schema({
   phone: Number,
   email: String,
   avatar: String,
+  alertmode: false,
   contacts:[{
     type: ObjectId,
     ref: 'User'
