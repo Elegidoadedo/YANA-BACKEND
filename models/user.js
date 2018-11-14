@@ -12,6 +12,13 @@ const userSchema = new Schema({
     type: ObjectId,
     ref: 'User'
   }],
+  location:{
+    type:{
+      type: String,
+      default: 'Point',
+    },
+    coordinates:[Number]
+  },
   message: [String],
 }, {
   timestamps: {
