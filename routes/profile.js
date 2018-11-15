@@ -12,7 +12,7 @@ router.put('/edit', (req, res, next) => {
   User.findByIdAndUpdate(user, data)
  
   .then((result)=>{
-    console.log(data)
+
     res.status(200).json(data)
   })
   .catch(next)
@@ -20,7 +20,6 @@ router.put('/edit', (req, res, next) => {
 
 router.patch('/alertmode', (req, res, next) => {
   let {mode} = req.body;
-  console.log("mode en baaaackend", mode)
   if(mode === "true"){ mode = true} else if(mode === "false"){ mode = false}
   const user = req.session.currentUser._id;
   User.findByIdAndUpdate(user, { alertmode: mode })
@@ -38,18 +37,16 @@ router.patch('/addContact', (req, res) => {
 
     User.findOne( {username:contact.contact.contact})
     .then(friend =>{
-      console.log("mi amigo",friend)
       const friendId = friend._id;
-      console.log("esta es la ID de mi amigo: ", friendId )
       user.contacts.push(ObjectId(friendId))
       user.save()
       .then((result)=>{
         res.status(200).json(result)
 
       })
-    .catch(console.log("no ha encontrado el friend"));  
+    .catch();  
     })
-  .catch(console.log("NO HA ENCONTRADO user"))  
+  .catch()  
   })
 });
 
@@ -60,7 +57,6 @@ router.get('/info', (req, res, next) => {
   User.findById(userId)
   .populate('contacts')
   .then((result)=>{
-    console.log(result)
     res.status(200).json(result)
     
   })

@@ -7,11 +7,9 @@ const ObjectId = mongoose.Types.ObjectId;
 
 router.put('/set', (req, res, next) => {
   let {longitude, latitude} = req.body
-  console.log(longitude)
   let user = req.session.currentUser._id;
   User.findByIdAndUpdate(user, {"location":{"type": "Point","coordinates":[ longitude, latitude]}})
   .then((result)=>{
-    console.log(result)
     res.status(200).json(result)
   })
   .catch(next)
@@ -20,7 +18,6 @@ router.put('/set', (req, res, next) => {
 router.post('/info', (req,res,next) =>{
   const user = req.session.currentUser;
   const {victim} = req.body;
-  console.log("esto es victim",victim)
   const result ={"user": user, "victim": victim}
 
   res.status(200).json(result)
@@ -29,7 +26,6 @@ router.post('/info', (req,res,next) =>{
 router.post('/points', (req, res, next) =>{
   const user = req.session.currentUser.location;
   const {latitude, longitude} = req.body;
-  console.log("aqui hay algo? ", latitude)
   
   const geojson = {
     "type": "FeatureCollection",

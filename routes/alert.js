@@ -7,7 +7,6 @@ const ObjectId = mongoose.Types.ObjectId;
 
 router.post('/add', (req, res, next) => {
   const  {id, heroes,location}  = req.body; 
-  console.log('ESTO ES LOCATION',location)
   const newAlert = new Alerts({ 'creator': id, 'heroes': heroes, 'location': location})
   newAlert.save()
   .then((result)=>{
