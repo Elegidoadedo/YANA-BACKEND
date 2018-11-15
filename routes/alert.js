@@ -36,10 +36,10 @@ router.get(`/`, (req,res,next) => {
 })
 
 router.post('/message', (req,res,next) => {
-  const {id, name} = req.body;
+  const {id, name, avatar} = req.body;
   User.findById(id)
   .then( victim =>{
-    victim.message.push(name + " is going to you!");
+    victim.message.push({username:name, avatar:avatar});
     victim.save()
     .then ( result =>{
       res.status(200).json(result)

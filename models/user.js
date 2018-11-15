@@ -20,7 +20,10 @@ const userSchema = new Schema({
     },
     coordinates:[Number]
   },
-  message: [String],
+  message: [{
+    username: String,
+    avatar: String
+  }],
 }, {
   timestamps: {
     createdAt: 'created_at',
