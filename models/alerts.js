@@ -8,11 +8,12 @@ const alertSchema = new Schema ({
     ref: 'User'
   },
 
-  location: {
-    type: {
+  location:{
+    type:{
       type: String,
+      default: 'Point',
     },
-    coordinates: [Number]
+    coordinates:[Number]
   },
   
   date: Date,

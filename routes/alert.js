@@ -6,8 +6,9 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
 router.post('/add', (req, res, next) => {
-  const  {id, heroes, location}  = req.body;  
-  const newAlert = new Alerts({ 'creator': id, 'heroes': heroes, "location": location})
+  const  {id, heroes,location}  = req.body; 
+  console.log('ESTO ES LOCATION',location)
+  const newAlert = new Alerts({ 'creator': id, 'heroes': heroes, 'location': location})
   newAlert.save()
   .then((result)=>{
     res.status(200).json(result)
