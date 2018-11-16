@@ -21,6 +21,19 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+var io = require('socket.io').listen(server);
+
+io.on('connection', (socket) => {
+  // socket.on('join', function (data) {
+  //   socket.join(data.room);
+  // });
+  socket.on('message', function (data) {
+    // io.in(data.room).emit('new message', { user: data.user, message: data.message, picture: data.picture, firstName: data.firstName, lastName: data.lastName });
+
+    io.in(User.message).emit(console.log("ESTO VIENE DE IO -", data));
+  });
+});
+
 /**
  * Listen on provided port, on all network interfaces.
  */
